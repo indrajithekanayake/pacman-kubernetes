@@ -1,6 +1,5 @@
 #!/bin/sh
 
-kubectl delete -n pacman -f security/rbac.yaml
 kubectl delete -n pacman -f security/secret.yaml
 kubectl delete -n pacman -f deployments/mongo-deployment.yaml
 kubectl delete -n pacman -f deployments/pacman-deployment.yaml
