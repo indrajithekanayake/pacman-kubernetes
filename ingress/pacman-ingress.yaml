@@ -1,0 +1,19 @@
+# Routes HTTP traffic from the NGINX Ingress controller to the Pac-Man Service.
+# Requires the pacman Service (port 80) and ingress-nginx controller in the cluster.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pacman
+  namespace: pacman
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: pacman
+                port:
+                  number: 80
