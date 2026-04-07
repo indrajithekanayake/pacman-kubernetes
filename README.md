@@ -1,2 +1,4 @@
 # pacman-kubernetes
+Pac-Man is deployed as a two-tier Kubernetes application in the pacman namespace, where multiple pacman frontend pods (managed by a Deployment) communicate with a MongoDB backend pod through the internal mongo ClusterIP Service, and Mongo persists data using a PVC backed by Azure disk storage. External user traffic enters through the NGINX Ingress Controller (running in ingress-nginx), which receives requests on its public load balancer IP and routes them via an Ingress rule to the internal pacman ClusterIP Service; that Service then load-balances requests across the available Pac-Man pods, providing scalable and highly available HTTP access while keeping backend and pod networking private inside the cluster.
+
 <img width="318" height="565" alt="Screenshot 2026-04-07 at 17 18 47" src="https://github.com/user-attachments/assets/07b70390-d9be-41f1-a15a-d9098540ebb2" />
